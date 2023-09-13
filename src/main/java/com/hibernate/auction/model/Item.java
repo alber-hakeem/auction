@@ -34,6 +34,5 @@ public class Item extends BaseEntity{
 
 
     @OneToMany(mappedBy = "item",cascade = CascadeType.REMOVE,fetch = FetchType.LAZY)
-    @EqualsAndHashCode.Exclude
     private Set<Bid> bids=new HashSet<>();
 }
