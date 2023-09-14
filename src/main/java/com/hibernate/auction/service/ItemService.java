@@ -1,5 +1,6 @@
 package com.hibernate.auction.service;
 
+import com.hibernate.auction.model.Bid;
 import com.hibernate.auction.model.Item;
 
 import java.util.List;
@@ -19,5 +20,8 @@ public interface ItemService {
 
     void delete(Long id);
 
+    Item addBid(Long itemId,Bid bid);
+
+    Item removeBid(Long itemId,Bid bid);
 
 }
