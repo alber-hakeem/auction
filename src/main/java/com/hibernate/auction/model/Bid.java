@@ -33,5 +33,7 @@ public class Bid extends BaseEntity{
     @Column(name = "value")
     private BigDecimal value;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    private User user;
 
 }

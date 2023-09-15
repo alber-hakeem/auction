@@ -1,5 +1,6 @@
 package com.hibernate.auction.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -41,9 +42,10 @@ public class Item extends BaseEntity {
 
     @OneToMany(mappedBy = "item", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @EqualsAndHashCode.Exclude
+    @JsonIgnore
     private Set<Bid> bids = new HashSet<>();
 
-    public void setBids(Set<Bid> bids) {
+    protected void setBids(Set<Bid> bids) {
         this.bids = bids;
     }
 

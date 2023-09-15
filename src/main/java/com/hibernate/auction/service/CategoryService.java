@@ -1,5 +1,6 @@
 package com.hibernate.auction.service;
 
+import com.hibernate.auction.dto.CategoryDto;
 import com.hibernate.auction.model.Category;
 
 import java.util.List;
@@ -15,5 +16,8 @@ public interface CategoryService {
     List<Category> findAll();
 
     Category findById(Long id);
+
+    CategoryDto findCategoryDtoById(Long id);
+
 }
 

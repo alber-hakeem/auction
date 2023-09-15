@@ -4,6 +4,7 @@ import com.hibernate.auction.exception.custom.RequestValidationException;
 import com.hibernate.auction.model.Bid;
 import com.hibernate.auction.model.Category;
 import com.hibernate.auction.model.Item;
+import com.hibernate.auction.model.User;
 import com.hibernate.auction.repository.ItemRepo;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -25,6 +26,7 @@ public class ItemServiceImpl implements ItemService {
 
     private final ItemRepo itemRepo;
     private final CategoryService categoryService;
+    private final UserService userService;
 
     @Override
     public Item create(Item item) {
@@ -61,6 +63,8 @@ public class ItemServiceImpl implements ItemService {
     @Transactional
     public Item addBid(Long itemId,Bid bid) {
         Item item = findById(itemId);
+        User user= userService.findById(bid.getUser().getId());
+        bid.setUser(user);
         item.addBid(bid);
         itemRepo.save(item);
         return item;

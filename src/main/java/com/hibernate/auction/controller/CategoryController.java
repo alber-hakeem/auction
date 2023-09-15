@@ -1,5 +1,6 @@
 package com.hibernate.auction.controller;
 
+import com.hibernate.auction.dto.CategoryDto;
 import com.hibernate.auction.helper.ApiResponse;
 import com.hibernate.auction.helper.ApiResponseBuilder;
 import com.hibernate.auction.model.Category;
@@ -38,8 +39,8 @@ public class CategoryController {
         return new ResponseEntity<>(apiResponse,HttpStatus.OK);
     }
     @GetMapping("/{id}")
-    public ResponseEntity<Category> findById(@PathVariable Long id){
-        return new ResponseEntity<>(categoryService.findById(id),HttpStatus.OK);
+    public ResponseEntity<CategoryDto> findById(@PathVariable Long id){
+        return new ResponseEntity<>(categoryService.findCategoryDtoById(id),HttpStatus.OK);
     }
 
 }

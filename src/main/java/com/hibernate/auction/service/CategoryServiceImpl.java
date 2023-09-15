@@ -1,5 +1,7 @@
 package com.hibernate.auction.service;
 
+import com.hibernate.auction.dto.CategoryDto;
+import com.hibernate.auction.mapper.CategoryMapper;
 import com.hibernate.auction.model.Category;
 import com.hibernate.auction.repository.CategoryRepo;
 import lombok.AllArgsConstructor;
@@ -20,7 +22,7 @@ import java.util.Set;
 @AllArgsConstructor
 public class CategoryServiceImpl implements CategoryService{
     private final CategoryRepo categoryRepo;
-
+    private final CategoryMapper categoryMapper;
     @Override
     public Category create(Category category) {
         return categoryRepo.save(category);
@@ -39,5 +41,10 @@ public class CategoryServiceImpl implements CategoryService{
             throw new EntityNotFoundException("This Category Is Not Exist");
         return category.get();
 
+    }
+
+    @Override
+    public CategoryDto findCategoryDtoById(Long id) {
+        return categoryMapper.entityToDto(findById(id));
     }
 }
